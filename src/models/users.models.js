@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
 const userSchema= new mongoose.Schema({
-    username:{
+    userName:{
         type:String,
         required:true,
         unique:true,
@@ -18,7 +18,7 @@ const userSchema= new mongoose.Schema({
         lowercase:true,
         trim:true,
     },
-    fullname:{
+    fullName:{
         type:String,
         required:true,
         trim:true,
@@ -46,7 +46,7 @@ const userSchema= new mongoose.Schema({
 },{timestamps:true})
 
 //using hashing technique before store the password in the database
-userSchema.pre("save",async function(){
+userSchema.pre("save",async function(next){
 
     if(this.isModified("password")){
 
