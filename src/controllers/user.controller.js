@@ -218,6 +218,15 @@ const changeCurrentPassword=asyncHandler(async(req,res)=>{
     }
 })
 
+const getCurrentUser = asyncHandler(async(req, res) => {
+    return res.status(200)
+    .json(new ApiResponse(
+        200,
+        req.user,
+        "User fetched successfully"
+    ))
+})
+
 const updateAccountDetails=asyncHandler(async(req,res)=>{
     const {fullName,email}=req.body;
 
@@ -386,4 +395,5 @@ export {
     updateUserCoverImage,
     getUserChannelProfile,
     getWatchHistory,
+    getCurrentUser,
 }
